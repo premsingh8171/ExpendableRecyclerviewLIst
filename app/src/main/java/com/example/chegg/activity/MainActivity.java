@@ -19,16 +19,13 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView main_rv;
     private ArrayList<ChapterModel> list_p = new ArrayList<>();
     private ArrayList<ChapterSubModel> list_c;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         main_rv = findViewById(R.id.main_rv);
-
         list();
     }
-
     private void list() {
         for (int i = 0; i < 4; i++) {
             ChapterModel model = new ChapterModel();
@@ -45,11 +42,8 @@ public class MainActivity extends AppCompatActivity {
                         model1_c.setSub_chapter("Data_3");
                     }
                     list_c.add(model1_c);
-
                 }
                 model.setChildList(list_c);
-
-
             } else if (i == 1) {
                 model.setChapter("Chapter2");
                 list_c = new ArrayList<>();
@@ -65,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
                         model1_c.setSub_chapter("Data_24");
                     }
                     list_c.add(model1_c);
-
                 }
                 model.setChildList(list_c);
             } else if (i == 2) {
@@ -83,7 +76,6 @@ public class MainActivity extends AppCompatActivity {
                         model1_c.setSub_chapter("Data_34");
                     }
                     list_c.add(model1_c);
-
                 }
                 model.setChildList(list_c);
             } else if (i == 3) {
@@ -105,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
                 }
                 model.setChildList(list_c);
             }
-
             list_p.add(model);
         }
         rv_list(list_p);
@@ -116,16 +107,10 @@ public class MainActivity extends AppCompatActivity {
         adapter = new MainAdapter(this, list_p_, new MainAdapter.OnClickItem() {
             @Override
             public void onClickItem(ChapterModel model) {
-                if (model.getChapter().equals("Chapter1")) {
-                } else if (model.getChapter().equals("Chapter2")) {
-                } else {
-                    Toast.makeText(MainActivity.this, "clicked", Toast.LENGTH_SHORT).show();
 
-                }
             }
         });
         main_rv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
     }
 }

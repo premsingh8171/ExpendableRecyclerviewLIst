@@ -23,7 +23,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     ArrayList<ChapterModel> list_p;
     ArrayList<ChapterSubModel> list_c;
     int pos = -1;
-    childAdapter childAdapter;
+    ChildAdapter childAdapter;
     public OnClickItem onClickItem;
     boolean enable = true;
 
@@ -57,9 +57,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
             }
         });
+
         if (pos == position) {
             if (enable == true) {
-                childAdapter = new childAdapter(mContext, list_c);
+                childAdapter = new ChildAdapter(mContext, list_c);
                 holder.child_rv.setAdapter(childAdapter);
                 holder.child_rv.setVisibility(View.VISIBLE);
                 enable = false;

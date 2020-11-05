@@ -4,8 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,13 +15,13 @@ import com.example.chegg.modelactivity.ChapterSubModel;
 
 import java.util.ArrayList;
 
-public class childAdapter extends RecyclerView.Adapter<childAdapter.ViewHolder> {
+public class ChildAdapter extends RecyclerView.Adapter<ChildAdapter.ViewHolder> {
     Context mContext;
-    ArrayList<ChapterSubModel> chilsList;
+    ArrayList<ChapterSubModel> childList;
 
-    public childAdapter(Context mContext, ArrayList<ChapterSubModel> chilsList) {
+    public ChildAdapter(Context mContext, ArrayList<ChapterSubModel> chilsList) {
         this.mContext = mContext;
-        this.chilsList = chilsList;
+        this.childList = chilsList;
     }
 
     @NonNull
@@ -33,14 +33,21 @@ public class childAdapter extends RecyclerView.Adapter<childAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ChapterSubModel model = chilsList.get(position);
+        final ChapterSubModel model = childList.get(position);
         holder.tv_1.setText(model.getSub_chapter());
+        holder.tv_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(mContext, "" + model.getSub_chapter(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
     }
 
     @Override
     public int getItemCount() {
-        return chilsList.size();
+        return childList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -49,6 +56,8 @@ public class childAdapter extends RecyclerView.Adapter<childAdapter.ViewHolder> 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tv_1 = itemView.findViewById(R.id.item_name_child);
+
+
         }
     }
 
